@@ -1,23 +1,25 @@
 [package]
-name = "protoc-grpcio"
-version = "1.0.2"
-authors = ["Matt Pelland <matt@pelland.io>"]
-license = "Apache-2.0"
-keywords = ["compiler", "grpc", "protobuf", "grpc-rs"]
-repository = "https://github.com/mtp401/protoc-grpcio"
-documentation = "https://docs.rs/protoc-grpcio"
-description = """
-API for programatically invoking the grpcio (grpc-rs) gRPC compiler
-"""
+name = "example"
+version = "0.0.1"
+authors = ["kanner"]
+publish = false
 
-[badges]
-maintenance = { status = "actively-developed" }
-travis-ci = { repository = "mtp401/protoc-grpcio" }
+[lib]
+name = "protos"
+path = "src/protos/mod.rs"
+
+[[bin]]
+name = "server"
+path = "src/server.rs"
 
 [dependencies]
-grpcio-compiler = "0.5.0-alpha"
-failure = "0.1"
-tempfile = "^3.0.6"
-protobuf = "2.1"
-protobuf-codegen = "2.1"
-protoc = "2.0"
+futures = "0.1.16"
+grpcio = "0.4.3"
+protobuf = {version="2.4",features=["with-serde"]}
+lazy_static = "1.0"
+serde_json= "1.0"
+
+[build-dependencies]
+protoc-grpcio="1.0"
+protobuf = {version="2.4",features=["with-serde"]}
+protobuf-codegen = "2.4"

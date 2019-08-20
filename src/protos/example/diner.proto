@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package example;
+
+import "google/protobuf/struct.proto";
+
+service Diner {
+  rpc Eat(Order) returns (Check) {}
+}
+
+message Order {
+}
+
+message Check {
+  google.protobuf.Struct data = 1;
+}
